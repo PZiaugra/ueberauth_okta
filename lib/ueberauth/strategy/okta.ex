@@ -36,10 +36,9 @@ defmodule Ueberauth.Strategy.Okta do
     token_url: "/oauth2/v1/token",
     userinfo_url: "/oauth2/v1/userinfo"
 
-  alias Ueberauth.Auth.Info
   alias Ueberauth.Auth.Credentials
   alias Ueberauth.Auth.Extra
-
+  alias Ueberauth.Okta.Info
   alias Plug.Conn
 
   @doc """
@@ -154,6 +153,7 @@ defmodule Ueberauth.Strategy.Okta do
       email: user["email"],
       location: user["address"],
       phone: user["phone_number"],
+      login: user["login"],
       urls: %{profile: user["profile"]}
     }
   end
